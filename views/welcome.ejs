@@ -1,10 +1,19 @@
-<div>
-  <div>
-    <div>
-      <h1><i class="fab fa-node-js fa-3x"></i></h1>
-      <p>Create an account or login</p>
-      <a href="/users/register">Register</a>
-      <a href="/users/login">Login</a>
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head') %>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1><i class="fab fa-node-js fa-3x"></i></h1>
+        <div class="welcome-txt">
+          <h2>Members-Only Project</h2>
+          <p>Create an account or login</p>
+        </div>
+        <div class="welcome-btn">
+          <a href="/users/register">Register</a>
+          <a href="/users/login">Login</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </body>
+</html>

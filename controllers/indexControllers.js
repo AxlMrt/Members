@@ -3,7 +3,7 @@ const indexGet = (req, res) => {
 };
 
 const dashboardGet = (req, res) => {
-  res.render('dashboard', { name: req.user});
+  res.render('dashboard', { name: req.user });
 };
 
 module.exports = {

@@ -1,5 +1,6 @@
 const express = require('express');
-const expressLayouts = require('express-ejs-layouts');
+const path = require('path');
+const logger = require('morgan')
 const app = express();
 const flash = require('connect-flash');
 const session = require('express-session');
@@ -13,12 +14,16 @@ require('./config/passport')(passport);
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const messageRouter = require('./routes/messages');
 
 //Views
-app.use(expressLayouts);
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //Middleware
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
@@ -30,7 +35,6 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
@@ -42,6 +46,7 @@ app.use((req, res, next) => {
 //Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/messages', messageRouter)
 
 const start = async (req, res) => {
   try {

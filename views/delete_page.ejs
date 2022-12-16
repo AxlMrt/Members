@@ -4,9 +4,10 @@
   <body>
     <%- include('./partials/nav') %>
     <div class="dashboard">
-      <h1>Dashboard</h1>
-      <p>Welcome <%= name.name %></p>
-      <a href="/messages">Say you were here !</a>
+      <h1><%= title %></h1>
+      <div class="card">
+        <%- include('./partials/messages/message_delete') %>
+      </div>
     </div>
   </body>
 </html>
