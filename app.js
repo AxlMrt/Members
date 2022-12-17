@@ -1,9 +1,10 @@
 const express = require('express');
+const logger = require('morgan');
 const path = require('path');
-const logger = require('morgan')
 const app = express();
-const flash = require('connect-flash');
+const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const flash = require('connect-flash');
 const passport = require('passport');
 
 const connectDB = require('./config/db/connect');
@@ -23,6 +24,7 @@ app.set('view engine', 'ejs');
 //Middleware
 app.use(logger('dev'));
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(
@@ -46,7 +48,7 @@ app.use((req, res, next) => {
 //Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/messages', messageRouter)
+app.use('/messages', messageRouter);
 
 const start = async (req, res) => {
   try {
