@@ -2,13 +2,13 @@
   <div class="message-card">
     <div class="message-date">
       <h3><%= message.title %></h3>
-      <p><%= name.name %></p>
+      <p><%= user.name %></p>
       <span><%= message.date.toLocaleString().split(',')[0] %></span>
     </div>
     <p><%= message.comment %></p>
-    <% if (name.isAdmin) { %>
+    <% if (user.isAdmin) { %>
       <div class="message-btn">
-        <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
+        <a href="messages/update/<%= message.id %>"><i class="fa-regular fa-pen-to-square"></i></a>
         <a href="messages/<%= message.id %>"><i class="fa-regular fa-trash-can"></i></a>
       </div>
     <% } %>

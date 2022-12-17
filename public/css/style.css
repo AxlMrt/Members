@@ -145,11 +145,19 @@ header > a > h1 > span {
   .card {
     width: 50%;
   }
+
+  .message-card {
+    width: 70%
+  }
 }
 
 @media screen and (max-width: 769px) {
   .card {
     width: 70%;
+  }
+
+  .message-card {
+    width: 90%
   }
 }
 
